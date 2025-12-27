@@ -1,31 +1,31 @@
 package base;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import pages.HomePage;
 
 import java.time.Duration;
 
 public class BaseTest {
 
-    protected WebDriver driver;
+    public WebDriver driver;
+    public HomePage homePage;
 
     @BeforeMethod
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-
-        // Tu w przyszłości możesz wczytać URL z config.properties
-        driver.get("https://localhost");
+        driver.get("http://localhost");
+        this.homePage = new HomePage(this.driver);
     }
 
     @AfterMethod
-    public void tearDown() {
+    public void cleanUp() {
         if (driver != null) {
             driver.quit();
         }

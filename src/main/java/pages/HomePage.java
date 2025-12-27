@@ -2,23 +2,64 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import java.util.List;
 
 public class HomePage {
 
-    private final WebDriver driver;
+    public final WebDriver driver;
 
-    // lokatory
-    private final By loginButton = By.id("login-btn");
+    @FindBy(name = "login")
+    public WebElement loginInput;
+
+    @FindBy(name = "haslo")
+    public WebElement passwordInput;
+
+    @FindBy(className = "button_log1")
+    public WebElement loginButton;
+
+    @FindBy (className = "e-login2")
+    public WebElement loginError;
+
+    @FindBy (xpath = "*//ul[@class='welcome']/li")
+    public WebElement successLogin;
+
+    @FindBy (xpath = "*//div[@id='zawartosc']/div[@class='post']")
+    public List<WebElement> posts;
+
+    @FindBy (xpath = "//a[@class='afooter2']")
+    public WebElement loginAsAdminButton;
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
-    public void clickLoginButton() {
-        driver.findElement(loginButton).click();
+    public void uzupelnijLogin(String login) {
+        loginInput.clear();
+        loginInput.sendKeys(login);
     }
 
-    public String getTitle() {
-        return driver.getTitle();
+    public void uzupelnijHaslo(String password) {
+        passwordInput.clear();
+        passwordInput.sendKeys(password);
     }
-}
+
+    public void kliknijZaloguj() {
+        loginButton.click();
+    }
+
+    public int zwrocLiczeNewsow () {
+        return posts.size();
+    }
+
+    public AdminPage uruchomPanelLogowaniaAdmina () {
+        loginAsAdminButton.click();
+        AdminPage adminPage = new AdminPage(this.driver);
+        return adminPage;
+    }
+
+    }

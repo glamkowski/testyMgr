@@ -1,15 +1,33 @@
 package tests;
 
 import base.BaseTest;
+import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.HomePage;
 
 public class HomePageTest extends BaseTest {
+    @Test
+    public void niePowinienSieZalogowacJakoKlient(){
+        homePage.uzupelnijLogin("blednyLogin");
+        homePage.uzupelnijHaslo("bledneHaslo");
+        homePage.kliknijZaloguj();
+        Assert.assertEquals(homePage.loginError.getText(), "Błędne dane logowania!");
+    }
 
     @Test
-    public void shouldOpenHomePageAndHaveProperTitle() {
-        HomePage homePage = new HomePage(driver);
+    public void powinienSieZalogowacJakoKlient(){
+        homePage.uzupelnijLogin("Kowlaski");
+        homePage.uzupelnijHaslo("CCC000000");
+        homePage.kliknijZaloguj();
+        Assert.assertEquals(homePage.successLogin.getText(), "Zalogowany jako: Oskar Kowlaski");
+    }
 
-        String title = homePage.getTitle();
+    @Test
+    public void powinienWidziecNewsy() {
+        Assert.assertTrue(homePage.zwrocLiczeNewsow() > 0);
+    }
+
+    @Test
+    public void powinienPrzekierowacDoLogowaniaAdmina() {
+        Assert.assertEquals(homePage.uruchomPanelLogowaniaAdmina().zwrocNaglowek(), "Logowanie do panelu admina");
     }
 }
