@@ -10,8 +10,8 @@ public class HomePageTest extends BaseTest {
     public void niePowinienSieZalogowacJakoKlient() throws InterruptedException {
         homePage.uzupelnijLogin("blednyLogin");
         homePage.uzupelnijHaslo("bledneHaslo");
-        Thread.sleep(3000);
         homePage.kliknijZaloguj();
+        Thread.sleep(3000);
         Assert.assertEquals(homePage.loginError.getText(), "Błędne dane logowania!");
     }
 
