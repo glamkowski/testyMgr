@@ -40,6 +40,7 @@ public class HomePageTest extends BaseTest {
         homePage.uruchomPanelLogowaniaAdmina();
         adminPage.uzupelnijLoginHaslo("admin111", "admin1");
         adminPage.zalogujButton.click();
+        Thread.sleep(3000);
         adminPage.nowosci.click();
         Thread.sleep(3000);
         homePage.usunNews();
