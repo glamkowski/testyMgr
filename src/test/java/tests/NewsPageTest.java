@@ -1,9 +1,6 @@
 package tests;
 
 import base.BaseTest;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

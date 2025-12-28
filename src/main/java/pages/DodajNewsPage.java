@@ -17,6 +17,9 @@ public class DodajNewsPage extends BaseTest {
     @FindBy (xpath = "//input[@class='button_send']")
     public WebElement dodajNewsButton;
 
+    @FindBy (xpath = "//input[@class='button_send']")
+    public WebElement dodajNewsButton4;
+
     @FindBy (xpath = "//a[@class='informacja_dodanie']")
     public WebElement komunikatDodania;
 
