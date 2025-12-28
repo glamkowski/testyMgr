@@ -53,11 +53,7 @@ public class RandomDataUtils {
     public static String randomCity() {
         return faker.address().city();
     }
-
-    public static String randomUsername() {
-        return faker.name().username();
-    }
-
+    
     public static String randomSentence() {
         return faker.lorem().sentence();
     }

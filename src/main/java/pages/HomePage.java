@@ -21,19 +21,19 @@ public class HomePage {
     @FindBy(className = "button_log1")
     public WebElement loginButton;
 
-    @FindBy (className = "e-login2")
+    @FindBy(className = "e-login2")
     public WebElement loginError;
 
-    @FindBy (xpath = "*//ul[@class='welcome']/li")
+    @FindBy(xpath = "*//ul[@class='welcome']/li")
     public WebElement successLogin;
 
-    @FindBy (xpath = "*//div[@id='zawartosc']/div[@class='post']")
+    @FindBy(xpath = "*//div[@id='zawartosc']/div[@class='post']")
     public List<WebElement> posts;
 
-    @FindBy (xpath = "//a[@class='afooter2']")
+    @FindBy(xpath = "//a[@class='afooter2']")
     public WebElement loginAsAdminButton;
 
-    @FindBy (xpath = "//a[text()='Usuń']")
+    @FindBy(xpath = "//a[text()='Usuń']")
     public List<WebElement> newsy;
 
 
@@ -56,18 +56,17 @@ public class HomePage {
         loginButton.click();
     }
 
-    public int zwrocLiczeNewsow () {
+    public int zwrocLiczeNewsow() {
         return posts.size();
     }
 
-    public AdminPage uruchomPanelLogowaniaAdmina () {
+    public AdminPage uruchomPanelLogowaniaAdmina() {
         loginAsAdminButton.click();
         AdminPage adminPage = new AdminPage(this.driver);
         return adminPage;
     }
 
     public void usunNews() {
-        newsy.getFirst().click();
+        newsy.get(0).click();
     }
-
-    }
+}
