@@ -16,10 +16,11 @@ public class HomePageTest extends BaseTest {
     }
 
     @Test
-    public void powinienSieZalogowacJakoKlient(){
+    public void powinienSieZalogowacJakoKlient() throws InterruptedException {
         homePage.uzupelnijLogin("Kowlaski");
         homePage.uzupelnijHaslo("CCC000000");
         homePage.kliknijZaloguj();
+        Thread.sleep(3000);
         Assert.assertEquals(homePage.successLogin.getText(), "Zalogowany jako: Oskar Kowlaski");
     }
 
@@ -34,12 +35,13 @@ public class HomePageTest extends BaseTest {
     }
 
     @Test
-    public void powinienUsunacNews() {
+    public void powinienUsunacNews() throws InterruptedException {
         int iloscNewsow = homePage.zwrocLiczeNewsow();
         homePage.uruchomPanelLogowaniaAdmina();
         adminPage.uzupelnijLoginHaslo("admin111", "admin1");
         adminPage.zalogujButton.click();
         adminPage.nowosci.click();
+        Thread.sleep(3000);
         homePage.usunNews();
         Assert.assertTrue(iloscNewsow != homePage.zwrocLiczeNewsow());
     }

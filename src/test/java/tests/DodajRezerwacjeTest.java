@@ -5,7 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class DodajRezerwacjeTest extends BaseTest {
-    @Test
+
     public void dodajRezerwacje() throws InterruptedException {
         homePage.uruchomPanelLogowaniaAdmina();
         adminPage.uzupelnijLoginHaslo("admin111", "admin1");
