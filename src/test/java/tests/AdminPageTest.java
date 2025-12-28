@@ -21,12 +21,4 @@ public class AdminPageTest extends BaseTest {
         adminPage.zalogujButton.click();
         Assert.assertEquals(adminPage.loginError.getText(), "Błędne dane logowania!");
     }
-
-    public void powinienDodacNews () {
-        homePage.uruchomPanelLogowaniaAdmina();
-        adminPage.uzupelnijLoginHaslo("admin111", "admin1");
-        adminPage.zalogujButton.click();
-        adminPage.dodajNewsBtn.click();
-    }
-
 }
