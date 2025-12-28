@@ -7,9 +7,10 @@ import org.testng.annotations.Test;
 public class HomePageTest extends BaseTest {
 
     @Test
-    public void niePowinienSieZalogowacJakoKlient(){
+    public void niePowinienSieZalogowacJakoKlient() throws InterruptedException {
         homePage.uzupelnijLogin("blednyLogin");
         homePage.uzupelnijHaslo("bledneHaslo");
+        Thread.sleep(3000);
         homePage.kliknijZaloguj();
         Assert.assertEquals(homePage.loginError.getText(), "Błędne dane logowania!");
     }
