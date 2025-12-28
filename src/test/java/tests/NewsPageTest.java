@@ -16,6 +16,7 @@ public class NewsPageTest extends BaseTest {
         dodajNewsPage.uzuplenijTytul("Testowy123");
         dodajNewsPage.uzupelnijTresc("testowy komentarz...");
         dodajNewsPage.kliknijDodajNewsButton();
+        Thread.sleep(3000);
         Assert.assertEquals(dodajNewsPage.komunikatDodania.getText(), "Dodano news pomyślnie!");
     }
 

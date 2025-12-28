@@ -43,6 +43,7 @@ public class HomePageTest extends BaseTest {
         adminPage.nowosci.click();
         Thread.sleep(3000);
         homePage.usunNews();
+        Thread.sleep(3000);
         Assert.assertTrue(iloscNewsow != homePage.zwrocLiczeNewsow());
     }
 }
