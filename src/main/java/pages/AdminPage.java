@@ -31,6 +31,9 @@ public class AdminPage {
     @FindBy (xpath = "//a[text()='Dodaj rezerwacje']")
     public WebElement dodajRezerwacjeBtn;
 
+    @FindBy (xpath = "//*[text()='Nowości']")
+    public WebElement nowosci;
+
     public AdminPage (WebDriver driver) {
         PageFactory.initElements(driver, this);
     }

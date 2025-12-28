@@ -33,6 +33,10 @@ public class HomePage {
     @FindBy (xpath = "//a[@class='afooter2']")
     public WebElement loginAsAdminButton;
 
+    @FindBy (xpath = "//a[text()='Usuń']")
+    public List<WebElement> newsy;
+
+
     public HomePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -60,6 +64,10 @@ public class HomePage {
         loginAsAdminButton.click();
         AdminPage adminPage = new AdminPage(this.driver);
         return adminPage;
+    }
+
+    public void usunNews() {
+        newsy.getFirst().click();
     }
 
     }
