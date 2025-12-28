@@ -24,6 +24,7 @@ public class DriverFactory {
         options.addArguments("--headless=new");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
+        options.setBinary("/usr/bin/chromium");
 
         WebDriverManager.chromedriver().setup();
         WebDriver webDriver = new ChromeDriver(options);
