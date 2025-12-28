@@ -22,7 +22,7 @@ public class BaseTest {
     public void setUp() {
         DriverFactory.initDriver();
         driver = DriverFactory.getDriver();
-        driver.get("http://host.docker.internal:8080");
+        driver.get("http://host.docker.internal");
         this.homePage = new HomePage(driver);
         this.adminPage = new AdminPage(driver);
         this.dodajNewsPage = new DodajNewsPage(driver);
