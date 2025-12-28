@@ -19,8 +19,12 @@ public class DriverFactory {
         prefs.put("profile.password_manager_enabled", false);
 
         options.setExperimentalOption("prefs", prefs);
-        options.addArguments("user-data-dir=C:/selenium/chrome-profile-test");
-        options.addArguments("--incognito");
+//        options.addArguments("user-data-dir=C:/selenium/chrome-profile-test");
+//        options.addArguments("--incognito");
+        options.addArguments("--headless=new");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.setBinary("/usr/bin/chromium");
 
         WebDriverManager.chromedriver().setup();
         WebDriver webDriver = new ChromeDriver(options);
