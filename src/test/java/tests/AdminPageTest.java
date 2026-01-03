@@ -22,7 +22,7 @@ public class AdminPageTest extends BaseTest {
         homePage.uruchomPanelLogowaniaAdmina();
         adminPage.uzupelnijLoginHaslo("admin", "admin");
         adminPage.zalogujButton.click();
-        Thread.sleep(3000);
+        WaitUtils.waitForVisible(driver, (By) adminPage.loginError, 5);
         Assert.assertEquals(adminPage.loginError.getText(), "Błędne dane logowania!");
     }
 }

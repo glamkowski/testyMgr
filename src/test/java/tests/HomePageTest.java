@@ -1,17 +1,19 @@
 package tests;
 
 import base.BaseTest;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utils.WaitUtils;
 
 public class HomePageTest extends BaseTest {
 
     @Test
-    public void niePowinienSieZalogowacJakoKlient() throws InterruptedException {
+    public void niePowinienSieZalogowacJakoKlient() {
         homePage.uzupelnijLogin("blednyLogin");
         homePage.uzupelnijHaslo("bledneHaslo");
         homePage.kliknijZaloguj();
-        Thread.sleep(3000);
+        WaitUtils.waitForVisible(driver, (By) homePage.loginError, 5);
         Assert.assertEquals(homePage.loginError.getText(), "Błędne dane logowania!");
     }
 
@@ -20,7 +22,7 @@ public class HomePageTest extends BaseTest {
         homePage.uzupelnijLogin("Kowlaski");
         homePage.uzupelnijHaslo("CCC000000");
         homePage.kliknijZaloguj();
-        Thread.sleep(3000);
+        WaitUtils.waitForVisible(driver, (By) homePage.successLogin, 5);
         Assert.assertEquals(homePage.successLogin.getText(), "Zalogowany jako: Oskar Kowlaski");
     }
 
@@ -40,11 +42,11 @@ public class HomePageTest extends BaseTest {
         homePage.uruchomPanelLogowaniaAdmina();
         adminPage.uzupelnijLoginHaslo("admin111", "admin1");
         adminPage.zalogujButton.click();
-        Thread.sleep(3000);
+        WaitUtils.waitForVisible(driver, (By) adminPage.nowosci, 5);
         adminPage.nowosci.click();
-        Thread.sleep(3000);
+        WaitUtils.waitForVisible(driver, (By) homePage.newsy, 5);
         homePage.usunNews();
-        Thread.sleep(3000);
+        WaitUtils.waitForVisible(driver, (By) homePage.posts, 5);
         Assert.assertTrue(iloscNewsow != homePage.zwrocLiczeNewsow());
     }
 }
