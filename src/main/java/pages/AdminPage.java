@@ -65,6 +65,7 @@ public String pobierzTesktZloginError () {
         loginInput.clear();
         loginInput.sendKeys(login);
         passwordInput.click();
+
         passwordInput.clear();
         passwordInput.sendKeys(password);
     }
