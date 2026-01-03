@@ -53,12 +53,10 @@ public String pobierzTesktZloginError () {
     }
 
     public void kliknijWnowosci() {
-        WaitUtils.waitForVisible(this.driver, this.nowosci, 5);
         nowosci.click();
     }
 
     public boolean zweryfikujCzyWelcomeAreaDostepne () {
-        WaitUtils.waitForVisible(this.driver, this.welcomeArea, 5);
         return welcomeArea.isDisplayed();
     }
 
