@@ -14,6 +14,7 @@ public class AdminPageTest extends BaseTest {
         adminPage.uzupelnijLoginHaslo("admin111", "admin1");
         adminPage.zalogujButton.click();
         Assert.assertTrue(adminPage.zweryfikujCzyWelcomeAreaDostepne());
+
     }
 
     @Test
