@@ -57,6 +57,7 @@ public String pobierzTesktZloginError () {
     }
 
     public boolean zweryfikujCzyWelcomeAreaDostepne () {
+        WaitUtils.waitForVisible(this.driver, this.welcomeArea, 5);
         return welcomeArea.isDisplayed();
     }
 
