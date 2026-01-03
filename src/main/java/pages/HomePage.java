@@ -37,14 +37,13 @@ public class HomePage {
     @FindBy (xpath = "//a[text()='Usuń']")
     public List<WebElement> newsy;
 
-
     public HomePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
     public String pobierzTekstTesktZLoginError() {
-        WaitUtils.waitForVisible(driver, (By) loginError, 5);
+        WaitUtils.waitForVisible(driver, loginError, 5);
         return loginError.getText();
 
     }
