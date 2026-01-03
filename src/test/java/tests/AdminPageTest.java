@@ -1,8 +1,10 @@
 package tests;
 
 import base.BaseTest;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utils.WaitUtils;
 
 public class AdminPageTest extends BaseTest {
 
@@ -11,7 +13,7 @@ public class AdminPageTest extends BaseTest {
         homePage.uruchomPanelLogowaniaAdmina();
         adminPage.uzupelnijLoginHaslo("admin111", "admin1");
         adminPage.zalogujButton.click();
-        Thread.sleep(3000);
+        WaitUtils.waitForVisible(driver, (By) adminPage.welcomeArea, 5);
         Assert.assertTrue(adminPage.welcomeArea.isDisplayed());
     }
 
