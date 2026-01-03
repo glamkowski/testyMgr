@@ -13,8 +13,7 @@ public class HomePageTest extends BaseTest {
         homePage.uzupelnijLogin("blednyLogin");
         homePage.uzupelnijHaslo("bledneHaslo");
         homePage.kliknijZaloguj();
-        WaitUtils.waitForVisible(driver, (By) homePage.loginError, 5);
-        Assert.assertEquals(homePage.loginError.getText(), "Błędne dane logowania!");
+        Assert.assertEquals(homePage.pobierzTekstTesktZLoginError(), "Błędne dane logowania!");
     }
 
     @Test
@@ -46,7 +45,7 @@ public class HomePageTest extends BaseTest {
         adminPage.nowosci.click();
         WaitUtils.waitForVisible(driver, (By) homePage.newsy, 5);
         homePage.usunNews();
-        WaitUtils.waitForVisible(driver, (By) homePage.posts, 5);
+        Thread.sleep(3000);
         Assert.assertTrue(iloscNewsow != homePage.zwrocLiczeNewsow());
     }
 }

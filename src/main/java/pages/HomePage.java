@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utils.WaitUtils;
 
 import java.util.List;
 
@@ -40,6 +41,12 @@ public class HomePage {
     public HomePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
+    }
+
+    public String pobierzTekstTesktZLoginError() {
+        WaitUtils.waitForVisible(driver, (By) loginError, 5);
+        return loginError.getText();
+
     }
 
     public void uzupelnijLogin(String login) {
