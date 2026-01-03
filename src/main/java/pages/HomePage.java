@@ -42,6 +42,11 @@ public class HomePage {
         PageFactory.initElements(driver, this);
     }
 
+    public String pobierzTesktzLoginSukces() {
+        WaitUtils.waitForVisible(driver, successLogin, 5);
+        return successLogin.getText();
+    }
+
     public String pobierzTekstTesktZLoginError() {
         WaitUtils.waitForVisible(driver, loginError, 5);
         return loginError.getText();
@@ -63,6 +68,7 @@ public class HomePage {
     }
 
     public int zwrocLiczeNewsow () {
+        WaitUtils.waitForVisible(driver, newsy.getFirst(), 5);
         return posts.size();
     }
 
@@ -73,6 +79,7 @@ public class HomePage {
     }
 
     public void usunNews() {
+        WaitUtils.waitForVisible(driver, newsy.getFirst(), 5);
         newsy.getFirst().click();
     }
 

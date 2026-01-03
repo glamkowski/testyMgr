@@ -21,8 +21,7 @@ public class HomePageTest extends BaseTest {
         homePage.uzupelnijLogin("Kowlaski");
         homePage.uzupelnijHaslo("CCC000000");
         homePage.kliknijZaloguj();
-        WaitUtils.waitForVisible(driver, homePage.successLogin, 5);
-        Assert.assertEquals(homePage.successLogin.getText(), "Zalogowany jako: Oskar Kowlaski");
+        Assert.assertEquals(homePage.pobierzTesktzLoginSukces(), "Zalogowany jako: Oskar Kowlaski");
     }
 
     @Test
@@ -41,11 +40,8 @@ public class HomePageTest extends BaseTest {
         homePage.uruchomPanelLogowaniaAdmina();
         adminPage.uzupelnijLoginHaslo("admin111", "admin1");
         adminPage.zalogujButton.click();
-        WaitUtils.waitForVisible(driver, adminPage.nowosci, 5);
         adminPage.nowosci.click();
-        WaitUtils.waitForVisible(driver, homePage.newsy.getFirst(), 5);
         homePage.usunNews();
-        WaitUtils.waitForVisible(driver, homePage.newsy.getFirst(), 5);
         Assert.assertTrue(iloscNewsow != homePage.zwrocLiczeNewsow());
     }
 }

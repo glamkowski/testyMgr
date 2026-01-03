@@ -4,8 +4,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utils.WaitUtils;
 
 public class AdminPage {
+
+    public WebDriver driver;
 
     @FindBy (xpath = "//a[@class='ataskbar']")
     public WebElement bar1;
@@ -35,11 +38,17 @@ public class AdminPage {
     public WebElement nowosci;
 
     public AdminPage (WebDriver driver) {
+        this.driver = driver;
         PageFactory.initElements(driver, this);
     }
 
     public String zwrocNaglowek() {
         return bar1.getText();
+    }
+
+    public void kliknijWnowosci() {
+        WaitUtils.waitForVisible(this.driver, this.nowosci, 5);
+        nowosci.click();
     }
 
     public void uzupelnijLoginHaslo (String login, String password) {
