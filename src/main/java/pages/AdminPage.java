@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -42,6 +43,11 @@ public class AdminPage {
         PageFactory.initElements(driver, this);
     }
 
+public String pobierzTesktZloginError () {
+        WaitUtils.waitForVisible(this.driver, this.loginError, 5);
+        return loginError.getText();
+    }
+
     public String zwrocNaglowek() {
         return bar1.getText();
     }
@@ -49,6 +55,10 @@ public class AdminPage {
     public void kliknijWnowosci() {
         WaitUtils.waitForVisible(this.driver, this.nowosci, 5);
         nowosci.click();
+    }
+
+    public boolean zweryfikujCzyWelcomeAreaDostepne () {
+        return welcomeArea.isDisplayed();
     }
 
     public void uzupelnijLoginHaslo (String login, String password) {

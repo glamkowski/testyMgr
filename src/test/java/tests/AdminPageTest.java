@@ -13,8 +13,7 @@ public class AdminPageTest extends BaseTest {
         homePage.uruchomPanelLogowaniaAdmina();
         adminPage.uzupelnijLoginHaslo("admin111", "admin1");
         adminPage.zalogujButton.click();
-        WaitUtils.waitForVisible(driver, (By) adminPage.welcomeArea, 5);
-        Assert.assertTrue(adminPage.welcomeArea.isDisplayed());
+        Assert.assertTrue(adminPage.zweryfikujCzyWelcomeAreaDostepne());
     }
 
     @Test
@@ -22,7 +21,6 @@ public class AdminPageTest extends BaseTest {
         homePage.uruchomPanelLogowaniaAdmina();
         adminPage.uzupelnijLoginHaslo("admin", "admin");
         adminPage.zalogujButton.click();
-        WaitUtils.waitForVisible(driver, (By) adminPage.loginError, 5);
         Assert.assertEquals(adminPage.loginError.getText(), "Błędne dane logowania!");
     }
 }
